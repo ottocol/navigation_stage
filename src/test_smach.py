@@ -35,6 +35,7 @@ if __name__ == '__main__':
     with sm:
         StateMachine.add('UNO', Uno(), transitions={'success':'DOS'})
         StateMachine.add('DOS', Dos(), transitions={'success':'UNO', 'end':'stop'})
+    #"sis" solo sirve para mostrar una representación gráfica de la máquina de estados    
     sis = smach_ros.IntrospectionServer('server_name', sm, '/SM_ROOT')
     sis.start()
     sm.execute()
