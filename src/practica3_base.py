@@ -7,7 +7,7 @@ import math
 from smach import State,StateMachine
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from sensor_msgs.msg import LaserScan
-from std_msgs.msg import String
+from std_msgs.msg import Int32
 from geometry_msgs.msg import Twist
 
 TOPIC_VEL = "/cmd_vel"
@@ -29,7 +29,7 @@ class WanderAndDetect(State):
     
     def execute(self, userdata):
         self.subScan = rospy.Subscriber(TOPIC_SCAN, LaserScan, self.laser_callback)
-        self.subColor = rospy.Subscriber(TOPIC_COLOR, String , self.color_detected_calback)
+        self.subColor = rospy.Subscriber(TOPIC_COLOR, Int32 , self.color_detected_calback)
         rate = rospy.Rate(10)
 
         
